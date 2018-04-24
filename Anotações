@@ -1,3 +1,6 @@
+Exemplo do professor Edir
+https://github.com/ecaramba/pdv
+
 https://api.jquery.com/
 
 
@@ -72,4 +75,10 @@ BOOTSTRAP
 	icones - www.fontawesome.com
 	
 	localhost/phpmyadmin/
+	
+	* MODAL - similar ao prompt do Genexus
+		abre na mesma pagina ao invés de chamar outra, utiliza bootstrap
+		http://getbootstrap.com/docs/4.1/components/modal/
+	
+	
 	
