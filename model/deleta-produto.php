@@ -1,8 +1,17 @@
 <?php
 
-echo "produto deletado";
+    require_once "config.php";
+    $con = new PDO("mysql:dbname=". DB_BASE .";host=". DB_HOST .";charset=utf8", DB_USER, DB_SENHA);
 
-var_dump($_GET);
+    $id = $_GET['id'];
+    $sql = "DELETE FROM produtos where id = $id";
+    $res = $con->exec($sql);
 
+    if ($res === false) {
+        echo "ocorreu um erro ao deletar o produto";
+    } else {
+        echo "ok";
+    }
 
+    header("Location: /produtos.html");
 ?>

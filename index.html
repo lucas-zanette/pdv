@@ -7,9 +7,9 @@
     <link href="css/bootstrap.css" rel="stylesheet" />
 
     <style>
-        .principal {
-            margin-top: 20px
-        }
+     .principal{
+        margin-top: 20px;
+     }
     </style>
 </head>
 
@@ -28,48 +28,55 @@
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
+                
             </ul>
-
+            
         </div>
     </nav>
 
     <div class="container principal">
         <div class="row">
-            <div class="col-mb-4">
-                <div class="card">
+            <div class="col-md-4">
+                
+                <div class="card">                    
                     <div class="card-body">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">#</span>
+                              <span class="input-group-text" id="basic-addon1">#</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">.00</span>
+                            <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
+                            <div class="input-group-append">
+                                <button class="btn btn-info">+</button>
                             </div>
-                        </div>
+                        </div> <!-- fim do input-->
 
-                        <button type="button" class="btn btn-primary btn-lg btn-block">Finalizar</button>
-                        <button type="button" class="btn btn-warning btn-lg btn-block">Estornar</button>
-                        <button type="button" class="btn btn-danger btn-lg btn-block">Cancelar</button>
+                        <button type="button" class="btn btn-primary btn-block">Finalizar</button>
+                        <button type="button" class="btn btn-warning btn-block">Estornar</button>
+                        <button type="button" class="btn btn-danger btn-block">Cancelar</button>
 
                     </div>
-                </div>
+                </div><!-- fim do card-->
+
             </div>
-            <div class="col-mb-8">
-                <div class="card bg-light mb-3">
+
+            <div class="col-md-8">
+                <div class="card bg-light mb-3" >
                     <div class="card-header">Lista de Produtos</div>
                     <div class="card-body">
-                        <ol>
-                            <li>Produto nome -- Qunt: 2 -- R$ 123,00</li>
-                            <li>Produto nome -- Qunt: 2 -- R$ 123,00</li>
-                        </ol>
+                      <ol>
+                          <li>Produto nome -- Quant: 2 -- R$ 123,99</li>
+                          <li>Produto nome -- Quant: 2 -- R$ 123,99</li>
+                      </ol>
                     </div>
                     <div class="card-footer">
-                        Total a pagar: xxx
+                        Total a Pagar: xxxx
                     </div>
-                </div>
-            </div>
+                  </div>
+            </div><!-- fim do card-->
+
         </div>
+    </div>
+
 </body>
 
 </html>

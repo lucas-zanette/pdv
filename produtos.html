@@ -18,6 +18,9 @@
         .principal {
             margin-top: 20px
         }
+        .hide {
+            display: none;
+        }
     </style>
 </head>
 
@@ -87,13 +90,13 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                        <a href="/model/deleta-produto.php" class="btn btn-danger">Sim</button>
+                        <a href="/model/deleta-produto.php?id=3" class="btn btn-danger" id="btn-del">Sim</button>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <!-- NOVO PRODUTO -->
 
         <div class="modal fade" tabindex="-1" role="dialog" id="novo-produto">
@@ -108,6 +111,10 @@
                     <div class="modal-body">
                         <form class="form-horizontal">
                             <fieldset>
+
+                                <div class="alert alert-danger" id="msg-erro"  role="alert">
+                                    
+                                </div>
 
                                 <!-- Text input-->
                                 <div class="form-group">
@@ -195,7 +202,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <a href="/model/deleta-produto.php" class="btn btn-success" id="salvar-produto">Salvar</button>
+                        <button class="btn btn-success" id="salvar-produto">Salvar</button>
                         </a>
                     </div>
                 </div>

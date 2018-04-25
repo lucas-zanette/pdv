@@ -1,8 +1,10 @@
 Exemplo do professor Edir
 https://github.com/ecaramba/pdv
 
+http://getbootstrap.com/docs/4.1/components/forms/
 https://api.jquery.com/
-
+https://igorescobar.github.io/jQuery-Mask-Plugin/docs.html
+http://php.net/manual/en/book.pdo.php
 
 JAVASCRIPT 
 	* guia de referencia: w3schools, mdn-https://developer.mozilla.org/pt-BR/
@@ -79,6 +81,7 @@ BOOTSTRAP
 	* MODAL - similar ao prompt do Genexus
 		abre na mesma pagina ao invés de chamar outra, utiliza bootstrap
 		http://getbootstrap.com/docs/4.1/components/modal/
-	
+
+	* https://api.jquery.com/jquery.post/
 	
 	
