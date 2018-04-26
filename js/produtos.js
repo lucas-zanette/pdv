@@ -1,76 +1,110 @@
-$(function () {
+$(function(){
 
     $("#preco").mask("000.00");
 
     listarProdutos();
 
-    $("salvar-produto").click(function()  {
-        var nome = $('nome').val();
+    $("#salvar-produto").click(function(){
 
-        if (nome.length <= 0) {
+        if ($('#nome').val().length <= 0){
+
             $('#nome').addClass('is-invalid');
-            return false;  //evita o comportamento padrão... ou seja, se o formulario não for válido retorna false se for válido irá retornar true
-        }                 
-        if ($('#marca').val() == 0) {
+            return false;
+        }
+        
+        if ($('#marca').val() == 0){
+
             $('#marca').addClass('is-invalid');
-            return false; 
+            return false;
         }
-        if ($('#categoria').val() == 0) {
-            $('#categoria').addClass('is-invalid');
-            return false; 
-        }
-        if ($('#preco').val() <= 0) {
+        
+        if ($('#preco').val() <= 0){
+
             $('#preco').addClass('is-invalid');
-            return false; 
+            return false;
         }
 
-        //objeto json
         var dados = {
             produto: $('#nome').val(),
             marca: $('#marca').val(),
-            categoria: $('#categoria').val(),
+            categora: $('#categora').val(),
             preco: $('#preco').val(),
-            sexo: $('#sexo').val()            
+            sexo: $('input[name=sexo]:checked').val(),
+            id: $('#id').val(),
         };
 
-        $.post()('/model/insere-produto.php', dados, function(info) {
-            if ( info == "ok") {
+        var tipo = $(this).attr("tipo");
+        var url = (tipo == "editar") ? '/model/edita-produto.php' : '/model/insere-produto.php';        
+
+        $.post(url, dados, function(info){
+            if (info == "ok") {
                 $("#novo-produto").modal("hide");
-                listarProdutos();            
+                listarProdutos();
             } else {
-                $('msg-erro').html(info);
-                $('msg-erro').show();
+                $('#msg-erro').html(info);
+                $('#msg-erro').show();
             }
         });
+    }); // fim do click #salvar-produto
 
-    });  //fim do click
-
-    //pega o id da lista... usa o on
-    $('#lista-produtos tbody').on('click', '.btn-deletar-produto', function() {  //on eu digo qual eu evento eu quero que aconteça
-        var codigo = $(this).parent().parent.attr('codigo');
+    $('#lista-produtos tbody').on('click', '.btn-deletar-produto', function(){
+        var codigo = $(this).parent().parent().attr('codigo');
         $('#btn-del').attr('href', '/model/deleta-produto.php?id=' + codigo);
         $("#deletar-produto").modal('show');
-    });    
+    });  //btn-deletar-produto
 
+    $('#lista-produtos tbody').on('click', '.btn-editar-produto', function(){
+        var codigo = $(this).parent().parent().attr('codigo');
+        $("#salvar-produto").attr('tipo', 'editar');        
+
+        $.getJSON('/model/carrega-produto.php', { "id": codigo}, function(val) {  //val retorna o valor do json no momento que clica no editar
+            $("#novo-produto").modal('show');
+           // console.log(val);
+
+            $('#nome').val(val.nome);
+            $('#marca').val(val.marca);
+            $('#categora').val(val.categora);
+            $('#sexo').val(val.sexo);
+            $('#preco').val(val.preco);
+            $("#id").val(codigo);
+
+            $('input[name=sexo]').each(function(i, el) {
+                if(val.sexo == $(el).val()) {
+                    $(el).prop("checked", "checked")
+                }
+            }); //fim do each
+        }); //fim do getJson
+    }); //fim btn-editar-produto
+
+    $("#btn-novo").click(function(){
+        $("#novo-produto").modal('show');
+        $('input[type=text]').val();
+        $('select').val(0);
+        $('input[type=radio]:checked').removeProp('checked', false);
+    });
+
+    $('.btn-ord').click(function(){
+        listarProdutos(this).attr('coluna');
+    });
 });
 
-function listarProdutos() {   
-    $.getJSON('/model/listar-produtos.php', function (dados) {
-
+function listarProdutos(coluna){
+    $.getJSON('/model/listar-produtos.php', { ordem: coluna }, function(dados){
         $('#lista-produtos tbody').empty();
-        dados.forEach(function (el, id) {
-            var tr = '<tr codigo="' + el.id + '">'   
-                + '<td>' + el.id + '</td>'
-                + '<td>' + el.nome + '</td>'
-                + '<td>' + el.categora + '</td>'
-                + '<td>' + el.preco + '</td>'
-                + '<td>'
-                + '<button class="btn btn-primary" title="Editar"><i class="fas fa-edit"></i> </button>'
-                + '<button class="btn btn-danger" "btn deletar-produto" title="Deletar"><i class="fas fa-minus-circle"></i> </button>'
-                + '</td>'
-                + '</tr>'
-            $('#lista-produtos tbody').append(tr);
-        }); //fim foreach
+        dados.forEach(function(el, id){
+            
+            var tr = '<tr codigo="'+ el.id +'">'
+                    +'<td>'+ el.id +'</td>'
+                    +'<td>'+ el.nome +'</td>'
+                    +'<td>'+ el.categora +'</td>'
+                    +'<td>R$ '+ el.preco +'</td>'
+                    +'<td> '
+                        +'<button class="btn btn-primary btn-editar-produto" title="Editar"><i class="fas fa-edit"></i></button>'
+                        +'<button class="btn btn-danger btn-deletar-produto"  title="Deletar"><i class="fas fa-minus-circle"></i></button>'
+                    +'</td>'
+                +'</tr>';
 
-    });  //fim getJSON
+            $('#lista-produtos tbody').append(tr);
+        });// forEach
+    });// getJSON
 }

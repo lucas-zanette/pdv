@@ -1,17 +1,21 @@
 <?php
 
-    require_once "config.php";
-    $con = new PDO("mysql:dbname=". DB_BASE .";host=". DB_HOST .";charset=utf8", DB_USER, DB_SENHA);
+require_once "config.php";
 
-    $id = $_GET['id'];
-    $sql = "DELETE FROM produtos where id = $id";
-    $res = $con->exec($sql);
+$con = new PDO("mysql:dbname=". DB_BASE .";host=". DB_HOST .";charset=utf8", DB_USER, DB_SENHA);
 
-    if ($res === false) {
-        echo "ocorreu um erro ao deletar o produto";
-    } else {
-        echo "ok";
-    }
+$id = $_GET['id'];
 
-    header("Location: /produtos.html");
+$sql = "DELETE FROM produtos WHERE id = $id";
+
+$res = $con->exec($sql);
+
+if ($res === false){
+    echo "ocorreu um erro ao deletar o produto";
+} else {
+    echo "ok";
+}
+
+header("Location: /produtos.html");
+
 ?>
