@@ -57,7 +57,7 @@ $(function(){
         var codigo = $(this).parent().parent().attr('codigo');
         $("#salvar-produto").attr('tipo', 'editar');        
 
-        $.getJSON('/model/carrega-produto.php', { "id": codigo}, function(val) {  //val retorna o valor do json no momento que clica no editar
+        $.getJSON('/model/carrega-produto.php', {"id": codigo}, function(val) {  //val retorna o valor do json no momento que clica no editar
             $("#novo-produto").modal('show');
            // console.log(val);
 
@@ -81,11 +81,14 @@ $(function(){
         $('input[type=text]').val();
         $('select').val(0);
         $('input[type=radio]:checked').removeProp('checked', false);
+
+        $('#salvar-produto').attr('tipo', 'novo');
     });
 
     $('.btn-ord').click(function(){
         listarProdutos(this).attr('coluna');
     });
+
 });
 
 function listarProdutos(coluna){
