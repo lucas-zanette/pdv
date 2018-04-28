@@ -85,3 +85,45 @@ BOOTSTRAP
 	* https://api.jquery.com/jquery.post/
 	
 	
+NODE.JS
+	é o motorzinho v8 do chrome rodando no servidor
+	jquery não funciona no node pq não tem dom tem que ser js puro
+	com o nosso curso já temos tudo para começar a trabalhar com node
+	tem conceito de objetos
+	
+ELECTRON JS
+	spotify e novo skype são exemplos deste frame
+	
+CORDOVA
+	é um site que é um aplicativo rodando via web
+	sem precisar do java para compilar e testar
+
+PHONEGAP
+	projeto da adobe
+	
+ANGULAR
+	framework criado por um projeto do google
+	minimiza as chamadas de banco de js é
+	simplificar algumas coisas do js
+	um pouco engessado travadao
+	já o react e o view são mais simples
+
+REACT
+	melhor do que angular
+	mais usado porque é muito rápido e poderoso
+	js puro
+	paralelo so jquery tem componentes dele 
+	exemplo o mask do jquery tem mask do react
+	
+VUE.JS
+	conhecido como view
+	ele e o react são os mais usados ao invés de angular
+	mais simples que o react
+	recomendado para inicio por ser mais simples
+	já o iniciar do angular é mais pedreira
+	
+
+	
+	
+	
+	
