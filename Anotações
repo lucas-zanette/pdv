@@ -90,10 +90,19 @@ NODE.JS
 	jquery não funciona no node pq não tem dom tem que ser js puro
 	com o nosso curso já temos tudo para começar a trabalhar com node
 	tem conceito de objetos
-	
+	diferença entre php e node - o node fica rodando igual um app
+	consome bastante memoria porém fica rodando em paralelo
+	já o php espera, aguarda terminar para realizar o proximo processo
+		
 ELECTRON JS
 	spotify e novo skype são exemplos deste frame
-	
+NODEWEBJS -NWS
+	parecido com electron porém mais simples
+	tudo que se faz no aplicativo
+	se consegue fazer no electron e webnode
+	electron é mais customizável e flexivel
+	porém o nws é mais fácil
+		
 CORDOVA
 	é um site que é um aplicativo rodando via web
 	sem precisar do java para compilar e testar
